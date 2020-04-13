@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo -e "\n################## CASE 1 ##################\n"
+
+echo "/bin/ls -l" | /bin/sh > ../outsh
+echo "/bin/ls -l" | ./hsh > ../outhsh
+diff ../outsh ../outhsh > ../Task5_1
+
+rm ../outsh
+rm ../outhsh
+
+if [ -s ../Task5_1]
+then
+	printf "error on '/bin/ls -l' command\n"
+else
+	rm -rf ../Task5_1
+	printf "Success on '/bin/ls -l' command\n"
+fi
+
