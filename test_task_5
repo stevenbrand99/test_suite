@@ -1,0 +1,53 @@
+#!/bin/bash
+
+echo -e "\n################## CASE 1 ##################\n"
+
+echo "/bin/ls -l" | /bin/sh > ../outsh
+echo "/bin/ls -l" | ./hsh > ../outhsh
+diff ../outsh ../outhsh > ../Task5_1
+
+rm ../outsh
+rm ../outhsh
+
+if [ -s ../Task5_1]
+then
+	printf "error on '/bin/ls -l' command\n"
+else
+	rm -rf ../Task5_1
+	printf "Success on '/bin/ls -l' command\n"
+fi
+
+
+echo -e "\n################## CASE 2 ##################\n"
+
+echo "/bin/ls                 -la" | /bin/sh > ../outsh
+echo "/bin/ls                 -la" | ./hsh > ../outhsh
+diff ../outsh ../outhsh > ../Task5_1
+
+rm ../outsh
+rm ../outhsh
+
+if [ -s ../Task5_1]
+then
+	printf "error on '/bin/ls       -la' command\n"
+else
+	rm -rf ../Task5_1
+	printf "Success on '/bin/ls     -la' command\n"
+fi
+
+echo -e "\n################## CASE 3 ##################\n"
+
+echo "/bin/ls p" | /bin/sh > ../outsh
+echo "/bin/ls p" | ./hsh > ../outhsh
+diff ../outsh ../outhsh > ../Task5_1
+
+rm ../outsh
+rm ../outhsh
+
+if [ -s ../Task5_1]
+then
+	printf "error on '/bin/ls p' command\n"
+else
+	rm -rf ../Task5_1
+	printf "Success on '/bin/ls p' command\n"
+fi
