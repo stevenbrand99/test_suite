@@ -65,7 +65,6 @@ if [ -s ../Task5_1 ]
 then
 	printf "Error on '/bin/ls\0 -l' command\n"
 else
+	rm -rf ../Task5_1
 	printf "Success on '/bin/ls\0 -l' command\n"
 fi
-
-rm -rf ../Task5_1
