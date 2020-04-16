@@ -9,12 +9,12 @@ diff ../outsh ../outhsh > ../Task5_1
 rm ../outsh
 rm ../outhsh
 
-if [ -s ../Task5_1]
+if [ -s ../Task5_1 ]
 then
-	printf "error on '/bin/ls -l' command\n"
+printf "error on '/bin/ls -l' command\n"
 else
-	rm -rf ../Task5_1
-	printf "Success on '/bin/ls -l' command\n"
+rm -rf ../Task5_1
+printf "Success on '/bin/ls -l' command\n"
 fi
 
 
@@ -27,27 +27,70 @@ diff ../outsh ../outhsh > ../Task5_1
 rm ../outsh
 rm ../outhsh
 
-if [ -s ../Task5_1]
+if [ -s ../Task5_1 ]
 then
-	printf "error on '/bin/ls       -la' command\n"
+printf "error on '/bin/ls       -la' command\n"
 else
-	rm -rf ../Task5_1
-	printf "Success on '/bin/ls     -la' command\n"
+rm -rf ../Task5_1
+printf "Success on '/bin/ls     -la' command\n"
 fi
 
 echo -e "\n################## CASE 3 ##################\n"
 
 echo "/bin/ls p" | /bin/sh > ../outsh
 echo "/bin/ls p" | ./hsh > ../outhsh
+
 diff ../outsh ../outhsh > ../Task5_1
 
 rm ../outsh
 rm ../outhsh
 
-if [ -s ../Task5_1]
+if [ -s ../Task5_1 ]
 then
-	printf "error on '/bin/ls p' command\n"
+printf "error on '/bin/ls p' command\n"
 else
-	rm -rf ../Task5_1
-	printf "Success on '/bin/ls p' command\n"
+rm -rf ../Task5_1
+printf "Success on '/bin/ls p' command\n"
 fi
+
+echo -e "\n################## CASE 4 ##################\n"
+
+echo "/bin/ls\0 -l" | /bin/sh > ../outsh
+echo "/bin/ls\0 -l" | ./hsh > ../outhsh
+
+diff ../outsh ../outhsh > ../Task5_1
+
+rm ../outsh
+rm ../outhsh
+
+if [ -s ../Task5_1 ]
+then
+printf "Error on '/bin/ls\0 -l' command\n"
+else
+rm -rf ../Task5_1
+printf "Success on '/bin/ls\0 -l' command\n"
+fi
+
+echo -e "\n################## CASE 5 ##################\n"
+
+echo "/bin/ls
+/bin/ls
+/bin/ls" | /bin/sh > ../outsh
+
+echo "/bin/ls
+/bin/ls
+/bin/ls" | ./hsh > ../outhsh
+
+diff ../outsh ../outhsh > ../Task5_1
+
+rm ../outsh
+rm ../outhsh
+
+if [ -s ../Task5_1 ]
+then
+printf "output error\n"
+else
+rm -rf ../Task5_1
+printf "Success \n"
+fi
+
