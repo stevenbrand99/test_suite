@@ -68,3 +68,127 @@ else
 	rm -rf ../Task5_1
 	printf "Success on '/bin/ls\0 -l' command\n"
 fi
+
+
+echo -e "\n################## CASE 5 ##################\n"
+echo -e "##################dot-space-dot##################\n"
+
+echo "./hsh: 1: .: .: not found" > ../outsh
+echo ".  ." | ./hsh 2> ../outhsh
+
+diff ../outsh ../outhsh > ../Task5_1
+
+
+
+if [ -s ../Task5_1 ]
+then
+	printf "incorrect output  - FAIL\n"
+	printf "output must be: \n"
+	printf "./hsh: 1: .: .: not found\n"
+	printf "actual output:\n"
+	echo ".  ." | ./hsh 
+else
+	rm -rf ../Task5_1
+	printf "correct output  - SUCCESS\n"
+	printf "actual output:\n"
+	echo ".  ." | ./hsh
+fi
+
+echo -e "\n################## CASE 6 ##################\n"
+echo -e "##################space-space-dot##################\n"
+
+echo "  ." | /bin/sh 2> ../outsh
+echo "  ." | ./hsh 2> ../outhsh
+
+diff ../outsh ../outhsh > ../Task5_1
+
+
+
+if [ -s ../Task5_1 ]
+then
+	printf "incorrect output  - FAIL\n"
+	printf "output must be: \n"
+	echo "  ." | /bin/sh
+	printf "actual output:\n"
+	echo "  ." | ./hsh 
+else
+	rm -rf ../Task5_1
+	printf "correct output  - SUCCESS\n"
+	printf "actual output:\n"
+	echo "  ." | ./hsh
+fi
+
+
+echo -e "\n################## CASE 7 ##################\n"
+echo -e "##################space-dot-dot##################\n"
+
+echo "./hsh: 1: ..: Permission denied" > ../outsh
+echo " .." | ./hsh 2> ../outhsh
+
+diff ../outsh ../outhsh > ../Task5_1
+
+
+
+if [ -s ../Task5_1 ]
+then
+	printf "incorrect output  - FAIL\n"
+	printf "output must be: \n"
+	printf "./hsh: 1: ..: Permission denied"
+	printf "actual output:\n"
+	echo " .." | ./hsh 
+else
+	rm -rf ../Task5_1
+	printf "correct output  - SUCCESS\n"
+	printf "actual output:\n"
+	echo " .." | ./hsh
+fi
+
+echo -e "\n################## CASE 8 ##################\n"
+echo -e "##################incorrect function##################\n"
+
+echo "./hsh: 1: ffh: not found" > ../outsh
+echo "ffh" | ./hsh 2> ../outhsh
+
+diff ../outsh ../outhsh > ../Task5_1
+
+
+
+if [ -s ../Task5_1 ]
+then
+	printf "incorrect output  - FAIL\n"
+	printf "command used: ffh\n"
+	printf "output must be: \n"
+	printf "./hsh: 1: ffh: not found"
+	printf "actual output:\n"
+	echo "ffh" | ./hsh 
+else
+	rm -rf ../Task5_1
+	printf "correct output  - SUCCESS\n"
+	printf "actual output:\n"
+	echo "ffh" | ./hsh
+fi
+
+echo -e "\n################## CASE 9 ##################\n"
+echo -e "##################incorrect flag##################\n"
+
+echo "ls dfg" | /bin/sh 2> ../outsh
+echo "ls dfg" | ./hsh 2> ../outhsh
+
+diff ../outsh ../outhsh > ../Task5_1
+
+
+
+if [ -s ../Task5_1 ]
+then
+	printf "incorrect output  - FAIL\n"
+	printf "command used: ls dfg\n"
+	printf "output must be: \n"
+	echo "ls dfg" | /bin/sh
+	printf "actual output:\n"
+	echo "ls dfg" | ./hsh 
+else
+	rm -rf ../Task5_1
+	printf "correct output  - SUCCESS\n"
+	printf "actual output:\n"
+	echo "ls dfg" | ./hsh
+fi
