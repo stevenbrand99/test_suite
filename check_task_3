@@ -105,3 +105,43 @@ else
 fi
 rm ../original
 rm ../yourShell
+
+echo -e "\n################## CASE 7 ##################\n"
+
+printf "Exit when only spaces string is passed as input\n"
+printf "\techo \"  \" | ./hsh\n"
+echo "  " | sh 2> ../original
+echo "  " | ./hsh 2> ../yourShell
+
+echo "Expected error: " ;cat ../original
+echo "Your error: " ;cat ../yourShell
+
+if ! diff -q ../original ../yourShell &>../Task3S7;
+then
+	rm ../original
+	rm ../yourShell
+        printf "\nNot the expected error of a command\n"
+else
+        rm -rf ../original ../yourShell
+        printf "\nCorrect expected error of echo \"  \" | ./hsh\n"
+fi
+
+echo -e "\n################## CASE 8 ##################\n"
+
+printf "Exit when wrong directory is passed as input\n"
+printf "\techo \"/wrong/dir/ls -l\" | ./hsh\n"
+echo "/wrong/dir/ls -l" | sh 2> ../original
+echo "/wrong/dir/ls -l" | ./hsh 2> ../yourShell
+
+echo "Expected error: " ;cat ../original
+echo "Your error: " ;cat ../yourShell
+
+echo -e "\n################## CASE 9 ##################\n"
+
+printf "Exit when a ./././ls  is passed as input\n"
+printf "\techo \"././././ls\" | ./hsh\n"
+echo "././././ls" | sh 2> ../original
+echo "././././ls" | ./hsh 2> ../yourShell
+
+echo "Expected error: " ;cat ../original
+echo "Your error: " ;cat ../yourShell
